@@ -47,16 +47,16 @@ const renderProducts = async () => {
                     <div class="discount">${product.discountPercentage}%</div>
                 ` : ''}
                 <img src="${product.thumbnail}" alt="${product.title}">
-                <div class="details">
-                    <div class="reviews">
+                <div class="details ">
+                    <div class="reviews flex">
                         <i class="bi bi-star-fill"></i> ${product.rating}
                     </div>
                     <div class="title">${product.title}</div>
                     <div class="price">R${product.price.toFixed(2)}</div>
                     <div class="btn-group">
                         <button class="btn-secondary view-btn">View</button>
-                        <button class="btn-primary cart-btn">Add to Cart</button>
-                        <button class="btn-secondary wishlist-btn">Wishlist</button>
+                        <button class="btn-primary cart-btn"><i class="bi bi-cart-check"></i></button>
+                        <button class="btn-secondary wishlist-btn"><i class="bi bi-heart-fill "></i></button>
                     </div>
                 </div>
             </div>
@@ -81,13 +81,14 @@ const updateCartUI = () => {
             <img src="${item.thumbnail}" class="cart-item-image">
             <div class="cart-item-info">
                 <h4>${item.title}</h4>
-                <p>R${item.price.toFixed(2)} × 
-                    <button class="quantity-btn" data-action="decrease">-</button>
+                <h1>R${item.price.toFixed(2)} 
+                <br> 
+                    <button class="quantity-btn" data-action="decrease"><i class="bi bi-dash-circle-fill "></i></button>
                     ${item.quantity}
-                    <button class="quantity-btn" data-action="increase">+</button>
-                </p>
-                <p>Subtotal: R${(item.price * item.quantity).toFixed(2)}</p>
-                <button class="remove-btn">Remove</button>
+                    <button class="quantity-btn" data-action="increase"><i class="bi bi-plus-circle-fill"></i></button>
+                </h1>
+                <p class="bold">Subtotal: R${(item.price * item.quantity).toFixed(2)}</p>
+                <button class="remove-btn bg-red-500 text-white">Remove</button>
             </div>
         </div>
     `).join('') : '<p>Your cart is empty</p>';
@@ -95,10 +96,20 @@ const updateCartUI = () => {
     // Update cart summary
     const total = calculateTotal(cart);
     domElements.modals.cart.querySelector('.cart-summary').innerHTML = `
-        <h3>Total: R${total.toFixed(2)}</h3>
+        <h3 class"text-green-500">Total: R${total.toFixed(2)}</h3>
         <button class="btn-primary checkout-btn">Checkout</button>
+        <button class="clear-btn bg-red-500 text-white h-3xl ml-6 p-3 onClick ="removeAll()">Clear Cart</button>
+
     `;
 };
+
+// clear the cart
+
+ function removeAll() {
+    
+}
+
+
 
 // Wishlist Management
 const updateWishlistUI = () => {
@@ -137,7 +148,7 @@ const setupEventListeners = () => {
         if (e.target.closest('.cart-btn')) {
             cart = addItem(cart, product);
             updateCartUI();
-            showNotification('Added to cart 🛒');
+            showNotification('🛒 Added to cart ');
         }
 
         if (e.target.closest('.wishlist-btn')) {
@@ -145,7 +156,7 @@ const setupEventListeners = () => {
             wishlist = result.updatedList;
             updateWishlistUI();
             showNotification(result.action === 'added' ?
-                'Added to wishlist 💖' : 'Removed from wishlist ❌');
+                '💖 Added to wishlist ' : '❌ Removed from wishlist ');
         }
     });
 
