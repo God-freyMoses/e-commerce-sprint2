@@ -6,15 +6,14 @@ import {
   toggleItem,
   fetchProducts,
   findProduct,
-   clearCart,
-   //filterProduct
+  clearCart,
+  
 } from "../js/ecommerce.js";
 
 // Application State
 let currentProducts = [];
 let cart = [];
 let wishlist = [];
-let filteredProducts = [];
 
 const form = document.getElementById("registerForm");
 const users = JSON.parse(localStorage.getItem("users")) || [];
@@ -146,12 +145,6 @@ const renderProducts = async () => {
 };
 
 renderProducts();
-
-
-const filtered = category
-  ? currentProducts.filter(p => p.category === category)
-  : currentProducts;
-renderProductList(filtered);
 
 
 // Cart Management
@@ -306,11 +299,11 @@ const setupEventListeners = () => {
   });
 
   //clear all
-  //  document.querySelector(".clear-btn").addEventListener("click", () => {
-  //   cart = clearCart(cart);
-  //   updateCartUI();
-  //   showNotification("Cart cleared!");
-  // });
+   document.querySelector(".clear-btn").addEventListener("click", () => {
+    cart = clearCart(cart);
+    updateCartUI();
+    showNotification("Cart cleared!");
+  });
 
   // Navigation buttons
   domElements.cartIcon.addEventListener("click", () => {
