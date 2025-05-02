@@ -18,29 +18,34 @@ const users = JSON.parse(localStorage.getItem("users")) || [];
 
 // register
 
-// window.addEventListener("DOMContentLoaded", () => {
-//   if (users.length) {
-//     const u = users[users.length - 1];
-//     form.name.value = u.name;
-//     form.email.value = u.email;
-//   }
-// });
+form.addEventListener("submit", e => {
+    e.preventDefault();
 
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
+    const newUser = {
+      name:             form.name.value.trim(),
+      surname:          form.surname.value.trim(),
+      email:            form.email.value.trim(),
+      registerPassword: form.registerPassword.value
+    };
 
-  const newUser = {
-    name: form.name.value.trim(),
-    surname: form.surname.value.trim(),
-    email: form.email.value.trim(),
-    registerPassword: form.registerPassword.value,
-  };
+    // Check for duplicates by email or full name
+    const isDuplicate = users.some(u =>
+      u.email   === newUser.email ||
+      (u.name   === newUser.name && u.surname === newUser.surname)
+    );  
 
-  users.push(newUser);
-  localStorage.setItem("users", JSON.stringify(users));
-  alert("Registration successful!");
-  form.reset();
-});
+    if (isDuplicate) {
+      alert("A user with that email or name already exists!");  
+      return;
+    }
+
+    // if No duplicate: save
+    users.push(newUser);                                    
+    localStorage.setItem("users", JSON.stringify(users));   
+
+    alert("Registration successful!");
+    form.reset();
+  });
 
 // DOM Elements
 const domElements = {
