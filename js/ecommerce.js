@@ -9,6 +9,24 @@ function addItem(cart, product) {
   return cart;
 }
 
+
+function clearCart(cart) {
+  console.log("clear cart");
+  cart.length = 0;
+  // cart.splice(0, cart.length);
+  updateCartUI();
+  return cart;    
+}
+
+// //filter product by category
+function filterProduct(products, category) {
+  if (!category) return products; 
+  return products.filter(product => 
+    product.category && product.category.toLowerCase() === category.toLowerCase()
+  );
+}
+
+
 function removeItem(cart, productId) {
   return cart.filter((item) => item.id !== productId);
 }
@@ -41,7 +59,6 @@ function toggleItem(wishlist, product) {
 }
 
 // Product fetching and validation
-
 async function fetchProducts() {
   try {
     const response = await fetch("https://dummyjson.com/products");
@@ -62,6 +79,7 @@ function validateProducts(products) {
     thumbnail: product.thumbnail,
     rating: product.rating.toFixed(1),
     discountPercentage: Math.round(product.discountPercentage),
+    category : product.category,
   }));
 }
 
@@ -78,4 +96,6 @@ export {
   validateProducts,
   fetchProducts,
   findProduct,
+  clearCart,
+  filterProduct
 };

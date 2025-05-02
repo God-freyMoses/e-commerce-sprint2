@@ -16,15 +16,27 @@
     <link rel="stylesheet" href="./style.css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
-    <script type="module" src="../js/main.js" ></script>
+    <script type="module" src="../js/main.js"></script>
 </head>
 
 <body>
     <nav>
-        <div class="logo">
+        <div class="logo text-amber-400">
             Luxéria Noir
             <p class="slogan">Designed for dazzle, made to last</p>
         </div>
+
+        <div class="filter mr-26">
+            <label for="filter">Filter by category</label>
+            <select class="bg-white rounded-full text-black pl-36" name="filter" id="filter">
+                <option value="">All Categories</option>
+                <option value="groceries">groceries</option>
+                <option value="beauty">beauty</option>
+                <option value="fragrances">fragrances</option>
+                <option value="furniture">furniture</option>
+            </select>
+        </div>
+
         <div class="right">
             <div class="icon" id="wishlist-icon">
                 <i class="bi bi-heart-fill"></i>
@@ -63,7 +75,7 @@
                 <div class="product-info">
                     <h3></h3>
                     <p class="price-display">Price: </p>
-                    <p class="description"></p> 
+                    <p class="description"></p>
                 </div>
             </div>
         </div>
@@ -142,12 +154,14 @@
                 </div>
                 <div class="form-group">
                     <label for="registerPassword">Password</label>
-                    <input type="password" id="registerPassword" name="password" placeholder="Enter your password" required>
+                    <input type="password" id="registerPassword" name="password" placeholder="Enter your password"
+                        required>
                 </div>
 
                 <div class="form-group">
                     <label for="confirmPassword">Confirm Password</label>
-                    <input type="password" id="confirmPassword" name="password" placeholder="Please re-enter your password" required>
+                    <input type="password" id="confirmPassword" name="password"
+                        placeholder="Please re-enter your password" required>
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary">Register</button>

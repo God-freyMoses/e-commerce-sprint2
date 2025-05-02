@@ -292,6 +292,10 @@ dialog {
     gap: var(--space-md);
 }
 
+#cart-modal{
+    width: 55%;
+}
+
 .cart-item-info {
     display: flex;
     flex-direction: column;
