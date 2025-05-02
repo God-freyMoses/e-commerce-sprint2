@@ -13,8 +13,34 @@ let currentProducts = [];
 let cart = [];
 let wishlist = [];
 
-const form = document.getElementById('register-form');
-const users = JSON.parse(localStorage.getItem('users')) || [];
+const form = document.getElementById("registerForm");
+const users = JSON.parse(localStorage.getItem("users")) || [];
+
+// register
+
+// window.addEventListener("DOMContentLoaded", () => {
+//   if (users.length) {
+//     const u = users[users.length - 1];
+//     form.name.value = u.name;
+//     form.email.value = u.email;
+//   }
+// });
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const newUser = {
+    name: form.name.value.trim(),
+    surname: form.surname.value.trim(),
+    email: form.email.value.trim(),
+    registerPassword: form.registerPassword.value,
+  };
+
+  users.push(newUser);
+  localStorage.setItem("users", JSON.stringify(users));
+  alert("Registration successful!");
+  form.reset();
+});
 
 // DOM Elements
 const domElements = {
