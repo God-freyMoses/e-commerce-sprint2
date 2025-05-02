@@ -35,6 +35,11 @@ body {
     color: var(--gray150);
 }
 
+#products-container{
+    padding: 10rem;
+    gap: 5rem;
+}
+
 button {
     border: none;
     transition: var(--transition-sm);

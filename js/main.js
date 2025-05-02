@@ -80,7 +80,6 @@ const showNotification = (message) => {
 };
 
 
-// renders  array 
 function renderProductList(products) {
   domElements.productsContainer.innerHTML = products
     .map(product => `<div class="product" data-id="${product.id}">
@@ -106,8 +105,7 @@ function renderProductList(products) {
 //filter products
 domElements.filterSelect.addEventListener('change', () => {
   const category = domElements.filterSelect.value;
-  // if you want “all” as an option, handle it here; otherwise this filters strictly
-  const filtered = currentProducts.filter(p => p.category === category);
+  const filtered = !category || category === 'All Categories' ? currentProducts : currentProducts.filter(p => p.category === category);
   renderProductList(filtered);
 });
 
