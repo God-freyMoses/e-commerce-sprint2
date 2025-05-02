@@ -13,6 +13,9 @@ let currentProducts = [];
 let cart = [];
 let wishlist = [];
 
+const form = document.getElementById('register-form');
+const users = JSON.parse(localStorage.getItem('users')) || [];
+
 // DOM Elements
 const domElements = {
     productsContainer: document.getElementById('products-container'),
