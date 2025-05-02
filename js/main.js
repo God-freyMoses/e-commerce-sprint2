@@ -22,30 +22,34 @@ form.addEventListener("submit", e => {
     e.preventDefault();
 
     const newUser = {
-      name:             form.name.value.trim(),
-      surname:          form.surname.value.trim(),
-      email:            form.email.value.trim(),
-      registerPassword: form.registerPassword.value
+        name: form.name.value.trim(),
+        surname: form.surname.value.trim(),
+        email: form.email.value.trim(),
+        registerPassword: form.registerPassword.value.trim(),
+        confirmPassword: form.confirmPassword.value.trim()
     };
-
-    // Check for duplicates by email or full name
-    const isDuplicate = users.some(u =>
-      u.email   === newUser.email ||
-      (u.name   === newUser.name && u.surname === newUser.surname)
-    );  
-
-    if (isDuplicate) {
-      alert("A user with that email or name already exists!");  
+    
+    if (newUser.registerPassword !== newUser.confirmPassword) {
+      alert("Passwords do not match");
       return;
     }
 
+    // Check for duplicates by email
+    const isDuplicate = users.some(u =>
+        u.email === newUser.email);
+
+    if (isDuplicate) {
+        alert("A user with that email or name already exists!");
+        return;
+    }
+
     // if No duplicate: save
-    users.push(newUser);                                    
-    localStorage.setItem("users", JSON.stringify(users));   
+    users.push(newUser);
+    localStorage.setItem("users", JSON.stringify(users));
 
     alert("Registration successful!");
     form.reset();
-  });
+});
 
 // DOM Elements
 const domElements = {
@@ -60,7 +64,7 @@ const domElements = {
         register: document.getElementById('register-modal')
     }
 };
- 
+
 
 // Notification System
 const showNotification = (message) => {
@@ -139,8 +143,8 @@ const updateCartUI = () => {
 
 // clear the cart
 
- function removeAll() {
-    
+function removeAll() {
+
 }
 
 
