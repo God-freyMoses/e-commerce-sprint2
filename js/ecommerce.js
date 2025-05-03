@@ -80,6 +80,7 @@ function validateProducts(products) {
     rating: product.rating.toFixed(1),
     discountPercentage: Math.round(product.discountPercentage),
     category : product.category,
+    warantee : product.warrantyInformation,
   }));
 }
 

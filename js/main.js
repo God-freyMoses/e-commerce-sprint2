@@ -81,7 +81,7 @@ function renderProductList(products) {
     .map(
       (
         product
-      ) => `<div class="product transition-all duration-300 hover:shadow-lg hover:shadow-green-400 hover:scale-105 h-[32rem] rounded-[.5rem] position-relative overflow-hidden bg-white" data-id="${
+      ) => `<div class="product transition-all duration-300 hover:shadow-lg hover:shadow-green-400 hover:scale-105 h-[35rem] rounded-[.5rem] position-relative overflow-hidden bg-white" data-id="${
         product.id
       }">
         ${
@@ -98,6 +98,8 @@ function renderProductList(products) {
           <div class="price font-bold text-2xl">R${product.price.toFixed(
             2
           )}</div>
+          <div class="title font-bold text-gray-500">${product.category}</div>
+
           <div class="btn-group flex gap-4 m-4">
             <button class="btn-secondary  view-btn">View</button>
             <button class="btn-primary cart-btn"><i class="bi bi-cart-check"></i></button>
@@ -142,12 +144,13 @@ const renderProducts = async () => {
                 }" alt="${product.title}">
                 <div class="details text-center position-relative">
                  <div class="reviewsTitle flex items-center gap-2">   
-  <div class="reviews flex items-center">
-    <i class="bi bi-star-fill"></i> ${product.rating}
-  </div>
-  <div class="title">${product.title}</div>
-</div>
+                  <div class="reviews flex items-center">
+                   <i class="bi bi-star-fill"></i> ${product.rating}
+                  </div>
+                  <div class="title">${product.title}</div>
+                </div>
                     <div class="price">R${product.price.toFixed(2)}</div>
+                    
                     <div class="btn-group">
                         <button class="btn-secondary view-btn">View</button>
                         <button class="btn-primary cart-btn"><i class="bi bi-cart-check"></i></button>
@@ -178,8 +181,12 @@ const updateCartUI = () => {
     ? cart
         .map(
           (item) => `
-        <div class="cart-item flex items-center gap-4 mb-4" data-id="${item.id}">
-            <img class="cart-item-image w-[100%] h-[100%] object-cover" src="${item.thumbnail}" class="cart-item-image">
+        <div class="cart-item flex items-center gap-4 mb-4" data-id="${
+          item.id
+        }">
+            <img class="cart-item-image w-[100%] h-[100%] object-cover" src="${
+              item.thumbnail
+            }" class="cart-item-image">
             <div class="cart-item-info mr-4 flex flex-col">
                 <h4>${item.title}</h4>
                 <h1>R${item.price.toFixed(2)} 
@@ -248,7 +255,11 @@ const setupEventListeners = () => {
         ".price-display"
       ).textContent = `R${product.price.toFixed(2)}`;
       modal.querySelector(".description").textContent = product.description;
-      // modal.querySelector(".")
+      modal.querySelector(".category").textContent = product.category;
+      modal.querySelector(".returnPolicy").textContent = product.returnPolicy;
+      // modal.querySelector(".warrantyInformation").textContent =
+        // product.warrantyInformation;
+        // modal.querySelector(".returnPolicy").textContent = product.returnPolicy;  
       modal.showModal();
     }
 
