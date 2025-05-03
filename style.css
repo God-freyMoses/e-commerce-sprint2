@@ -21,27 +21,7 @@
     --transition-lg: all 1s;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    list-style-type: none;
-    text-decoration: none;
-    font-family: "Poppins", sans-serif;
-}
-
-body {
-    background: var(--gray50);
-    color: var(--gray150);
-}
-
-#products-container{
-    padding: 10rem;
-    gap: 5rem;
-}
-
 button {
-    border: none;
     transition: var(--transition-sm);
     border-radius: var(--space-md);
     cursor: pointer;
@@ -54,9 +34,8 @@ button:hover {
 .btn-primary {
     background: linear-gradient(45deg, var(--primary100), var(--primary150));
     color: white;
-    padding: 12px 24px;
-    border-radius: 30px;
-    font-weight: bold;
+    border-radius: 25px;
+    font-weight: 300;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
 }
@@ -69,8 +48,7 @@ button:hover {
 .btn-secondary {
     background: linear-gradient(45deg, var(--green100), var(--green150));
     color: white;
-    padding: 12px 24px;
-    border-radius: 30px;
+    border-radius: 25px;
     font-weight: bold;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
@@ -83,51 +61,7 @@ button:hover {
 }
 
 /* NAVBAR ****************************/
-nav {
-    height: 8rem;
-    background: var(--primary150);
-    color: var(--gray50);
-    padding: 0 var(--space-md);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    left: 0;
-    z-index: 4;
-}
 
-nav .logo .slogan {
-    font-family: sans-serif;
-    font-weight: 200;
-    font-style: italic;
-    font-size: small;
-}
-
-footer {
-    height: 15rem;
-    color: var(--gray50);
-    border-top: #063f50;
-    padding: 0 var(--space-md);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    bottom: 0;
-    background-color: #32788e;
-}
-
-.logo {
-    font-weight: bold;
-    font-size: 2rem;
-    font-family: "Lavishly Yours", cursive;
-}
-
-nav .right {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1.5rem;
-}
 
 nav .right .cartCount {
     position: relative;
@@ -142,92 +76,9 @@ nav .right .cartCount span {
     border-radius: 50%;
 }
 
-nav .right a {
-    color: var(--gray50);
-    font-size: 1.2rem;
-    transition: var(--transition-sm);
-}
 
-nav .right a:hover {
-    color: var(--white);
-    font-weight: bolder;
-}
-
-nav .right i {
-    font-size: 1.5rem;
-    cursor: pointer;
-    transition: var(--transition-sm);
-}
-
-nav .right i:hover {
-    color: var(--white);
-    font-size: 1.8rem;
-}
-
-/* MAIN ****************************/
-main {
-    padding: var(--space-lg);
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-    gap: 2rem;
-    background-image: url("https://img.freepik.com/free-vector/abstract-background-with-lines_1035-9038.jpg?semt=ais_hybrid&w=740");
-    background-size: cover;
-}
-
-.bunner img {
-    height: 35rem;
-    width: 100%;
-}
-
-/* PRODUCT ****************************/
-.product {
-    height: 35rem;
-    background: var(--white);
-    transition: var(--transition-sm);
-    border-radius: 0.5rem;
-    position: relative;
-    overflow-y: hidden;
-}
-
-.product:hover {
-    box-shadow: -1px 4px 13px -2px rgb(43, 115, 155);
-}
-
-.product img {
-    height: 65%;
-    width: 100%;
-    object-fit: cover;
-}
-
-.product .details {
-    padding: var(--space-sm);
-    text-align: center;
-    position: relative;
-}
-
-.product .details .reviews {
-    position: absolute;
-    top: -1rem;
-    right: 1rem;
-}
-
-.product .details .reviews i {
-    color: var(--gold);
-}
-
-.product .details .title {
-    color: var(--gray100);
-}
-
-.product .details .price {
-    color: var(--gray200);
-    font-weight: 700;
-    font-size: 2.2rem;
-}
 
 .product .details .btn-group {
-    display: flex;
-    gap: 0.5rem;
     margin-top: var(--space-xm);
 }
 
@@ -236,29 +87,8 @@ main {
     padding: var(--space-xm);
 }
 
-.product .discount {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    background: var(--green100);
-    color: var(--gray50);
-    padding: var(--space-xm);
-    border-radius: var(--space-xm) 0 var(--space-xm) 0;
-    font-weight: 200;
-}
 
-#login-modal {
-    width: 35%;
-    height: fit-content;
-}
-
-#register-modal {
-    width: 35%;
-    height: fit-content;
-}
-
-dialog {
+/* dialog {
     background: var(--white);
     padding: var(--space-sm);
     width: 80%;
@@ -266,41 +96,38 @@ dialog {
     height: 70%;
     border-radius: var(--space-xm);
     border: none;
-}
+} */
 
-.modal-header {
+/* .modal-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: var(--space-md);
     border-bottom: 1px solid var(--gray100);
-}
+} */
 
-.modal-close {
+/* .modal-close {
     background: none;
     border: none;
     font-size: 1.5rem;
     cursor: pointer;
     color: var(--gray100);
-}
+} */
 
-.modal-content {
+/* .modal-content {
     display: flex;
     flex-direction: column;
     padding: var(--space-md);
-}
+} */
 
-.cart-item {
+/* .cart-item {
     display: flex;
     align-items: center;
     margin-bottom: var(--space-md);
     gap: var(--space-md);
-}
+} */
 
-#cart-modal{
-    width: 55%;
-}
-
+/* 
 .cart-item-info {
     display: flex;
     flex-direction: column;
@@ -344,13 +171,7 @@ form {
     border: 1px solid #ddd;
     border-radius: 5px;
     font-family: 'Poppins', sans-serif;
-}
-
-/* Footer */
-footer {
-    height: 20rem;
-    padding: 1rem;
-}
+} */
 
 /**wishlist***********************************************/
 .notification {

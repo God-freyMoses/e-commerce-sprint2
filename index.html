@@ -19,16 +19,16 @@
     <script type="module" src="../js/main.js"></script>
 </head>
 
-<body>
-    <nav>
-        <div class="logo text-amber-400">
+<body class="bg-gray-100 font-poppins flex flex-col  ">
+    <nav class="h-20 flex justify-between mb-0 items-center bg-emerald-900">
+        <div class="logo text-amber-400 pl-16  size-2xl font-(family-name: 'Lavishly Yours', cursive) text-4xl">
             Luxéria Noir
-            <p class="slogan">Designed for dazzle, made to last</p>
+            <p class="slogan italic font-thin text-sm">Designed for dazzle, made to last</p>
         </div>
 
-        <div class="filter mr-26">
-            <label for="filter">Filter by category</label>
-            <select class="bg-white rounded-full text-black pl-36" name="filter" id="filter">
+        <div class="filter m-26">
+            <label class="text-white" for="filter">Filter by category</label>
+            <select class="bg-white rounded-full text-black pl-16 pr-16 justify-between items-center" name="filter" id="filter">
                 <option value="">All Categories</option>
                 <option value="groceries">groceries</option>
                 <option value="beauty">beauty</option>
@@ -37,52 +37,53 @@
             </select>
         </div>
 
-        <div class="right">
-            <div class="icon" id="wishlist-icon">
+        <div class="right flex text-white gap-4 p-10">
+            <div class="icon hover:text-amber-400 cursor-pointer hover:font-bold" id="wishlist-icon" >
                 <i class="bi bi-heart-fill"></i>
             </div>
-            <div class="cartCount" id="cart-icon">
-                <span>0</span>
+            <div class="cartCount position-relative hover:text-amber-400 cursor-pointer hover:font-bold" id="cart-icon">
+                <span class="bg-amber-400 position-absolute  top-[-0.5rem] right-[-0.5rem] rounded-full">0</span>
                 <i class="bi bi-bag-fill"></i>
             </div>
-            <div>
+            <div class="hover:text-amber-400 cursor-pointer hover:font-bold">
                 <a href="#" id="login-link">Login</a>
             </div>
-            <div>
+            <div class="hover:text-amber-400 cursor-pointer hover:font-bold">
                 <a href="#" id="register-link">Register</a>
             </div>
         </div>
     </nav>
 
-    <section>
+    <section class="">
         <div class="bunner">
-            <img src="https://www.hairhousewarehouse.co.za/wp-content/uploads/2024/04/natural-organic-beauty-products-SA-feature.jpg"
-                alt="" />
+            <img class="w-[100%] h-[25rem]" src="https://www.hairhousewarehouse.co.za/wp-content/uploads/2024/04/natural-organic-beauty-products-SA-feature.jpg"
+                alt="bunner" />
         </div>
     </section>
 
-    <main id="products-container"></main>
+<main class="p-[5rem] gap-9 flex flex-wrap bg-cover grid grid-cols-3" id="products-container"
+  style="background-image: url('https://img.freepik.com/free-vector/abstract-background-with-lines_1035-9038.jpg?semt=ais_hybrid&w=740');"></main>
 
     <!-- Product Details Dialog -->
-    <dialog id="product-modal">
-        <div class="modal-header">
-            <h2>Product Details</h2>
-            <button class="modal-close">&times;</button>
+    <dialog class="bg-white p-4 w-[55%] h-[70%] rounded-sm ml-[16rem] mt-[5rem] " id="product-modal">
+        <div class="modal-header flex justify-between items-center border-b border-emerald-900 border-b-3 p-4">
+            <h2 class="text-emerald-900 font-bold text-2xl text-center flex">Product Details</h2>
+            <button class="modal-close font-bold bg-emerald-900 text-amber-400 w-4 text-xl">&times;</button>
         </div>
-        <div class="modal-content">
-            <div class="product-details">
+        <div class="modal-content flex gap-4 p-4 direction-column">
+            <div class="product-details flex gap-4 p-4 direction-column ">
                 <img src="" alt="" class="product-image">
-                <div class="product-info">
-                    <h3></h3>
-                    <p class="price-display">Price: </p>
-                    <p class="description"></p>
+                <div class="product-info ">
+                    <h3 class="product-title text-gray-500 text-xl mb-2 font-bold flex flex-col gap-4 "></h3>
+                    <p class="price-display text-emerald-900 text-4xl font-bold text-amerald-500 mb-2">Price: </p>
+                    <p class="description font-thin"></p>
                 </div>
             </div>
         </div>
     </dialog>
 
     <!-- Cart Dialog -->
-    <dialog id="cart-modal">
+    <dialog class="w-[55%]" id="cart-modal">
         <div class="modal-header">
             <h2>Cart Contents</h2>
             <button class="modal-close">&times;</button>
@@ -110,7 +111,7 @@
     </dialog>
 
     <!-- Login Dialog -->
-    <dialog id="login-modal">
+    <dialog class="modal w-[35%] h-fit" id="login-modal">
         <div class="modal-header">
             <h2>Login</h2>
             <button class="modal-close">&times;</button>
@@ -133,7 +134,7 @@
     </dialog>
 
     <!-- Register Dialog -->
-    <dialog id="register-modal">
+    <dialog class="modal w-[35%] h-fit" id="register-modal">
         <div class="modal-header">
             <h2>Register</h2>
             <button class="modal-close">&times;</button>
@@ -170,7 +171,7 @@
         </div>
     </dialog>
 
-    <footer>
+    <footer class="p-25 h-[10rem] bg-green-800 flex items-center justify-between text-white font-normal bottom">
         <div class="companyInfo">
             <ul>
                 <li>

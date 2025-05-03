@@ -7,7 +7,6 @@ import {
   fetchProducts,
   findProduct,
   clearCart,
-  
 } from "../js/ecommerce.js";
 
 // Application State
@@ -51,11 +50,10 @@ form.addEventListener("submit", (e) => {
   form.reset();
 });
 
-
 // DOM Elements
 const domElements = {
   productsContainer: document.getElementById("products-container"),
-  filterSelect:    document.querySelector('#filter'),
+  filterSelect: document.querySelector("#filter"),
 
   cartIcon: document.getElementById("cart-icon"),
   wishlistIcon: document.getElementById("wishlist-icon"),
@@ -78,55 +76,77 @@ const showNotification = (message) => {
   setTimeout(() => notification.remove(), 3000);
 };
 
-
 function renderProductList(products) {
   domElements.productsContainer.innerHTML = products
-    .map(product => `<div class="product" data-id="${product.id}">
-        ${product.discountPercentage
-            ? `<div class="discount">${product.discountPercentage}%</div>`
-            : ""}
+    .map(
+      (
+        product
+      ) => `<div class="product transition-all duration-300 hover:shadow-lg hover:shadow-green-400 hover:scale-105 h-[32rem] rounded-[.5rem] position-relative overflow-hidden bg-white" data-id="${
+        product.id
+      }">
+        ${
+          product.discountPercentage
+            ? `<div class="discount position-absolute top-[1rem] left-[1rem] w-[4rem] bg-emerald-500 text-white p-[0.5rem]">${product.discountPercentage}%</div>`
+            : ""
+        }
         <img src="${product.thumbnail}" alt="${product.title}">
-        <div class="details ">
-          <div class="reviews flex"><i class="bi bi-star-fill"></i> ${product.rating}</div>
-          <div class="title">${product.title}</div>
-          <div class="price">R${product.price.toFixed(2)}</div>
-          <div class="btn-group">
-            <button class="btn-secondary view-btn">View</button>
+        <div class="details text-center p-[1rem] position-relative p-[2rem]">
+          <div class="reviews flex"><i class="bi text-amber-400 bi-star-fill"></i> ${
+            product.rating
+          }</div>
+          <div class="title font-bold text-gray-500">${product.title}</div>
+          <div class="price font-bold text-2xl">R${product.price.toFixed(
+            2
+          )}</div>
+          <div class="btn-group flex gap-4 m-4">
+            <button class="btn-secondary  view-btn">View</button>
             <button class="btn-primary cart-btn"><i class="bi bi-cart-check"></i></button>
             <button class="btn-secondary wishlist-btn"><i class="bi bi-heart-fill"></i></button>
           </div>
         </div>
-      </div>`)
-    .join('');
+      </div>`
+    )
+    .join("");
 }
 
-
 //filter products
-domElements.filterSelect.addEventListener('change', () => {
+domElements.filterSelect.addEventListener("change", () => {
   const category = domElements.filterSelect.value;
-  const filtered = !category || category === 'All Categories' ? currentProducts : currentProducts.filter(p => p.category === category);
+  const filtered =
+    !category || category === "All Categories"
+      ? currentProducts
+      : currentProducts.filter((p) => p.category === category);
   renderProductList(filtered);
 });
-
 
 // Product Rendering
 const renderProducts = async () => {
   try {
     currentProducts = await fetchProducts();
     domElements.productsContainer.innerHTML = currentProducts
-      .map((product) => `<div class="product" data-id="${product.id}">
-                ${product.discountPercentage
+      .map(
+        (
+          product
+        ) => `<div class="product transition-all duration-300 hover:shadow-lg hover:scale-105 hover:shadow-green-400 h-[35rem] rounded-[.5rem] position-relative overflow-hidden bg-white" data-id="${
+          product.id
+        }">
+                ${
+                  product.discountPercentage
                     ? `
                     <div class="discount">${product.discountPercentage}%</div>
                 `
                     : ""
                 }
-                <img src="${product.thumbnail}" alt="${product.title}">
-                <div class="details ">
-                    <div class="reviews flex">
-                        <i class="bi bi-star-fill"></i> ${product.rating}
-                    </div>
-                    <div class="title">${product.title}</div>
+                <img class="product-image w-[100%] h-[65%] " src="${
+                  product.thumbnail
+                }" alt="${product.title}">
+                <div class="details text-center position-relative">
+                 <div class="reviewsTitle flex items-center gap-2">   
+  <div class="reviews flex items-center">
+    <i class="bi bi-star-fill"></i> ${product.rating}
+  </div>
+  <div class="title">${product.title}</div>
+</div>
                     <div class="price">R${product.price.toFixed(2)}</div>
                     <div class="btn-group">
                         <button class="btn-secondary view-btn">View</button>
@@ -136,16 +156,15 @@ const renderProducts = async () => {
                 </div>
             </div>
         `
-      ).join("");
-      renderProductList(currentProducts);
-
+      )
+      .join("");
+    renderProductList(currentProducts);
   } catch (error) {
     domElements.productsContainer.innerHTML = ` <div class="error">⚠️ ${error.message}</div> `;
   }
 };
 
 renderProducts();
-
 
 // Cart Management
 const updateCartUI = () => {
@@ -159,9 +178,9 @@ const updateCartUI = () => {
     ? cart
         .map(
           (item) => `
-        <div class="cart-item" data-id="${item.id}">
-            <img src="${item.thumbnail}" class="cart-item-image">
-            <div class="cart-item-info">
+        <div class="cart-item flex items-center gap-4 mb-4" data-id="${item.id}">
+            <img class="cart-item-image w-[100%] h-[100%] object-cover" src="${item.thumbnail}" class="cart-item-image">
+            <div class="cart-item-info mr-4 flex flex-col">
                 <h4>${item.title}</h4>
                 <h1>R${item.price.toFixed(2)} 
                 <br> 
@@ -183,7 +202,7 @@ const updateCartUI = () => {
   // Update cart summary
   const total = calculateTotal(cart);
   domElements.modals.cart.querySelector(".cart-summary").innerHTML = `
-        <h3 class"text-green-500">Total: R${total.toFixed(2)}</h3>
+        <h3 class"text-emerald-500">Total: R${total.toFixed(2)}</h3>
         <button class="btn-primary checkout-btn">Checkout</button>
         <button class="clear-btn bg-red-500 text-white h-3xl ml-6 p-5" onclick="clearCart()">Clear Cart</button>
     `;
@@ -229,6 +248,7 @@ const setupEventListeners = () => {
         ".price-display"
       ).textContent = `R${product.price.toFixed(2)}`;
       modal.querySelector(".description").textContent = product.description;
+      // modal.querySelector(".")
       modal.showModal();
     }
 
@@ -272,7 +292,6 @@ const setupEventListeners = () => {
       updateCartUI();
       showNotification("Removed from cart 🗑️");
     }
-
   });
 
   // Wishlist interactions
@@ -299,7 +318,7 @@ const setupEventListeners = () => {
   });
 
   //clear all
-   document.querySelector(".clear-btn").addEventListener("click", () => {
+  document.querySelector(".clear-btn").addEventListener("click", () => {
     cart = clearCart(cart);
     updateCartUI();
     showNotification("Cart cleared!");
