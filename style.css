@@ -62,22 +62,6 @@ button:hover {
 
 /* NAVBAR ****************************/
 
-
-nav .right .cartCount {
-    position: relative;
-}
-
-nav .right .cartCount span {
-    position: absolute;
-    top: -0.6rem;
-    right: -0.8rem;
-    background: var(--red);
-    padding: 0 0.5rem;
-    border-radius: 50%;
-}
-
-
-
 .product .details .btn-group {
     margin-top: var(--space-xm);
 }
@@ -187,7 +171,7 @@ form {
     z-index: 999;
 }
 
-@keyframes slideIn {
+/* @keyframes slideIn {
     from {
         transform: translateX(100%);
     }
@@ -195,4 +179,4 @@ form {
     to {
         transform: translateX(0);
     }
-}
+} */
